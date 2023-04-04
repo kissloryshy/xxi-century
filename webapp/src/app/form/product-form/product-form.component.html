@@ -1,0 +1,20 @@
+<div class="card-header">
+  <h2>Добавление товара</h2>
+</div>
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <div class="form-group col-md-3">
+        <label for="name">Название товара</label>
+        <input type="text" required [(ngModel)]="product.name" class="form-control" id="name" name="name" #name="ngModel">
+        <div [hidden]="!name.invalid || name.untouched" class="alert alert-danger">Имя товара не указано</div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="price">Цена</label>
+        <input required type="number" #price="ngModel" [(ngModel)]="product.price" class="form-control" id="price" name="price">
+        <div [hidden]="!price.invalid || price.untouched" class="alert alert-danger">Цена не указана</div>
+      </div>
+      <button [disabled]="!productForm.form.valid" class="btn btn-info" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
